@@ -11,6 +11,7 @@ public class User implements Serializable{
 	
 	private int us_id;
 	private String us_name;
+	private String us_nick;
 	private String us_address;
 	private String us_password;
 	
@@ -23,6 +24,15 @@ public class User implements Serializable{
 		super();
 		this.us_id = us_id;
 	}
+	
+	public String getUs_nick() {
+		return us_nick;
+	}
+
+	public void setUs_nick(String us_nick) {
+		this.us_nick = us_nick;
+	}
+
 	public int getUs_id() {
 		return us_id;
 	}
