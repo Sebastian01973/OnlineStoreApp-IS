@@ -18,8 +18,8 @@
       </div>
       <nav>
         <ul>
-          <li><a href="">Iniciar Sesion</a></li>
-          <li><a href="">Registrarse</a></li>
+          <li><a href="users/loginUser.jsp">Iniciar Sesion</a></li>
+          <li><a href="users/signUpUser.jsp">Registrarse</a></li>
         </ul>
       </nav>
     </div>
@@ -28,7 +28,7 @@
             <div class="header_left">
                 <h1>ENCUENTRA TUS PRODUCTOS RAPIDO Y SENCILLO.</h1>
                 <p>Miles de productos alimenticios están aquí al alcance de todos.</p>
-                <a href="" class="btnH btn-primary">Comienza a comprar</a>
+                <a href="users/loginUser.jsp" class="btnH btn-primary">Comienza a comprar</a>
             </div>
             <div class="header_right">
                 <div class="header_right-image">
