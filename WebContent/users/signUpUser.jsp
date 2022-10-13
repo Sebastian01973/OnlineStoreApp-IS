@@ -36,19 +36,19 @@
             </div>
             <div class="input">
                 <label for="name">Nombre Completo </label>
-                <input placeholder="Ingresar nombre" type="text" required>
+                <input placeholder="Ingresar nombre" type="text" name="us_name" required>
             </div>
             <div class="input">
                 <label for="nick">Nombre usuario</label>
-                <input placeholder="Nombre de usuario" type="text" required>
+                <input placeholder="Nombre de usuario" type="text" name="us_nick" required>
             </div>
             <div class="input">
                 <label for="address">Dirección</label>
-                <input placeholder="ingresar Dirección" type="text"required>
+                <input placeholder="ingresar Dirección" type="text" name="us_address" required>
             </div>
             <div class="input">
                 <label for="address">Contraseña</label>
-                <input placeholder="ingresar Contraseña" type="password" required>
+                <input placeholder="ingresar Contraseña" type="password" name="us_password" required>
             </div>
             <div class="input">
                 <label for="gender">Genero</label>

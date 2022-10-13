@@ -36,11 +36,11 @@
             </div>
             <div class="input">
                 <label for="usuario">Usuario</label>
-                <input placeholder="Ingresar Usuario" type="text" name="us_nick" id="usuario">
+                <input placeholder="Ingresar Usuario" type="text" name="us_nick" required>
             </div>
             <div class="input">
                 <label for="password">Contraseña</label>
-                <input placeholder="Ingresar contraseña" type="password" name="us_password" id="password">
+                <input placeholder="Ingresar contraseña" type="password" name="us_password" required>
             </div>
             <div class="input">
                 <input type="submit" value="Ingresar">
