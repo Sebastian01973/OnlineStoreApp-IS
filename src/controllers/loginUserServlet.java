@@ -57,8 +57,7 @@ public class loginUserServlet extends HttpServlet {
 			out.println("alert('User or password incorrect');");
 			out.println("location='users/loginUser.jsp';");
 			out.println("</script>");
-		}
-		
+		}	
 	}
 
 }

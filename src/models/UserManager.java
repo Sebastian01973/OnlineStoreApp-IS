@@ -10,7 +10,7 @@ public class UserManager {
 	public UserManager() {
 		super();
 		userList = new ArrayList<>();
-		userList.add(new User("sebas","1234"));
+		userList.add(new User("sebas","1234")); //Usuario de prueba
 	}
 
 	public  ArrayList<User> getUserList() {
@@ -33,9 +33,8 @@ public class UserManager {
 		return false;
 	}
 	
-	public void adduser(int us_id,String us_nick, String us_name, String us_address, String us_password) {
+	public void adduser(String us_nick, String us_name, String us_address, String us_password) {
 		User user = new User();
-		user.setUs_id(us_id);
 		user.setUs_name(us_name);
 		user.setUs_address(us_address);
 		user.setUs_password(us_password);
@@ -60,10 +59,6 @@ public class UserManager {
 			}
 		}
 		return null;
-	}
-	
-	public void deleteUser(int us_id) {
-		userList.remove(new User(us_id));
 	}
 	
 	
