@@ -20,6 +20,15 @@ public class User implements Serializable{
 		super();
 	}
 	
+	
+	
+	public User(String us_nick, String us_password) {
+		super();
+		this.us_nick = us_nick;
+		this.us_password = us_password;
+	}
+
+
 	public User(int us_id) {
 		super();
 		this.us_id = us_id;

@@ -10,14 +10,27 @@ public class UserManager {
 	public UserManager() {
 		super();
 		userList = new ArrayList<>();
+		userList.add(new User("sebas","1234"));
 	}
 
-	public ArrayList<User> getUserList() {
+	public  ArrayList<User> getUserList() {
 		return userList;
 	}
 
-	public void setUserList(ArrayList<User> userList) {
+	public  void  setUserList(ArrayList<User> userList) {
 		this.userList = userList;
+	}
+	
+	//Valida si la password y nick son los correctos
+	public boolean isAuthentication(String us_nick, String us_password) {
+		for (User user : userList) {
+			if (user.getUs_nick().equals(us_nick) && user.getUs_password().equals(us_password)) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+		return false;
 	}
 	
 	public void adduser(int us_id,String us_nick, String us_name, String us_address, String us_password) {
@@ -29,6 +42,16 @@ public class UserManager {
 		user.setUs_nick(us_nick);
 		userList.add(user);
 	}
+	
+	public User searchUser(String us_nick) {
+		for (User user : userList) {
+			if (user.getUs_nick().equals(us_nick)) {
+				return user;
+			}
+		}
+		return null;
+	}
+	
 	
 	public User searchUser(int us_id) {
 		for (User user : userList) {
