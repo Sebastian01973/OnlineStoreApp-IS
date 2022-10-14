@@ -75,7 +75,7 @@
           </figure>
         </div>
         <div class="box">
-          <h2>SOBRE NOSOTROS.</h2>
+          <h2>SOBRE NOSOTROS</h2>
           <p>Queremos que cuentes con los mejores productos alimenticios.</p>
           <p>Si quieres ahorrar regístrate y compra los productos que mas necesites.</p>
         </div>

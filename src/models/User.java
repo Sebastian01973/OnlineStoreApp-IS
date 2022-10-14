@@ -1,6 +1,7 @@
 package models;
 
 import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class User implements Serializable{
 
@@ -8,7 +9,7 @@ public class User implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	private static AtomicInteger ID_GENERATOR = new AtomicInteger(1000); //Auto incrementa el ID
 	private int us_id;
 	private String us_name;
 	private String us_nick;
@@ -18,12 +19,19 @@ public class User implements Serializable{
 	
 	public User() {
 		super();
+		us_id = ID_GENERATOR.getAndIncrement();
 	}
 	
-	public User(int us_id) {
+	
+	
+	public User(String us_nick, String us_password) {
 		super();
-		this.us_id = us_id;
+		us_id = ID_GENERATOR.getAndIncrement();
+		this.us_nick = us_nick;
+		this.us_password = us_password;
 	}
+
+
 	
 	public String getUs_nick() {
 		return us_nick;
@@ -36,9 +44,8 @@ public class User implements Serializable{
 	public int getUs_id() {
 		return us_id;
 	}
-	public void setUs_id(int us_id) {
-		this.us_id = us_id;
-	}
+	
+	
 	public String getUs_name() {
 		return us_name;
 	}

@@ -26,7 +26,7 @@
             <img src="../images/login.jpg" alt="">
         </div>
         <div class="container-login">
-            <form class="form">
+            <form class="form" action="../loginUserServlet" method="post">
             <div class="nameCompany">
                 <h2>A ver si ahorra</h2>
             </div>
