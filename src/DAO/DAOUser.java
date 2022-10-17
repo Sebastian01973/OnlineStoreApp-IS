@@ -24,7 +24,7 @@ public class DAOUser {
         ResultSet rs = null;
         User user = null;
         try {
-            conn = Conection.getConnection();
+            conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_SELECT_USER);
             stmt.setString(1, nick);
             rs = stmt.executeQuery();
@@ -38,9 +38,9 @@ public class DAOUser {
             ex.printStackTrace(System.out);
         }
         finally{
-        	Conection.close(rs);
-            Conection.close(stmt);
-            Conection.close(conn);
+        	Conexion.close(rs);
+        	Conexion.close(stmt);
+        	Conexion.close(conn);
         }
         return user;
         
@@ -51,7 +51,7 @@ public class DAOUser {
         PreparedStatement stmt = null;
         int rows = 0;
         try {
-            conn = Conection.getConnection();
+            conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
             stmt.setInt(1, user.getUs_id());
             stmt.setString(2, user.getUs_name());
@@ -66,8 +66,8 @@ public class DAOUser {
             ex.printStackTrace(System.out);
         }
         finally{
-        	Conection.close(stmt);
-        	Conection.close(conn);
+        	Conexion.close(stmt);
+        	Conexion.close(conn);
         }
         
         return rows;
@@ -78,7 +78,7 @@ public class DAOUser {
         PreparedStatement stmt = null;
         int rows = 0;
         try {
-            conn = Conection.getConnection();
+            conn = Conexion.getConnection();
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
             stmt.setString(1, user.getUs_name());
@@ -94,8 +94,8 @@ public class DAOUser {
             ex.printStackTrace(System.out);
         }
         finally{
-        	Conection.close(stmt);
-        	Conection.close(conn);
+        	Conexion.close(stmt);
+        	Conexion.close(conn);
         }
         
         return rows;
@@ -107,7 +107,7 @@ public class DAOUser {
         int rows = 0;
         
         try {
-            conn = Conection.getConnection();
+            conn = Conexion.getConnection();
             System.out.println("Ejecutando query:" + SQL_DELETE);
             stmt = conn.prepareStatement(SQL_DELETE);
             stmt.setInt(1, user.getUs_id());
@@ -117,8 +117,8 @@ public class DAOUser {
             ex.printStackTrace(System.out);
         }
         finally{
-        	Conection.close(stmt);
-        	Conection.close(conn);
+        	Conexion.close(stmt);
+        	Conexion.close(conn);
         }
         
         return rows;
