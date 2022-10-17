@@ -15,9 +15,13 @@ public class Product implements Serializable{
 		super();
 	}
 	
-	public Product(int pro_id) {
+	public Product(int pro_id, String pro_name, String pro_measure, double pro_price, int pro_units) {
 		super();
 		this.pro_id = pro_id;
+		this.pro_name = pro_name;
+		this.pro_measure = pro_measure;
+		this.pro_price = pro_price;
+		this.pro_units = pro_units;
 	}
 
 	public int getPro_id() {
