@@ -2,24 +2,22 @@ package models;
 
 import java.util.ArrayList;
 
+import DAO.ProductDAO;
+
 public class ProductManager {
 	
 	private ArrayList<Product> listProducts;
-	
+	private ProductDAO productDAO;
 	
 
 	public ProductManager() {
 		super();
 		listProducts = new ArrayList<>();
-		listProducts.add(new Product(1, "producto1", "1 kg", 1500,10));
-		listProducts.add(new Product(2, "producto2", "500 ml", 500,10));
-		listProducts.add(new Product(3, "producto3", "10 kg", 100000,10));
-		listProducts.add(new Product(4, "producto4", "200 ml", 50000,6));
-		listProducts.add(new Product(5, "producto5", "40 kg", 10500,10));
+		this.productDAO = new ProductDAO();
 	}
 
 	public ArrayList<Product> getListProducts() {
-		return listProducts;
+		return productDAO.getProducts();
 	}
 
 	public void setListProducts(ArrayList<Product> listProducts) {
