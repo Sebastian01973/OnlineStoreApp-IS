@@ -7,8 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import models.Product;
+import models.User;
 
 public class ProductDAO {
+	
+	private static final String SQL_UPDATE = "UPDATE product SET units=?  WHERE id=?";
+	
 	public ArrayList<Product> getProducts(){
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -38,4 +42,31 @@ public class ProductDAO {
 		}
 		return list;
 	}
+	
+	public int update(int units, int id){
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int rows = 0;
+        try {
+            conn = Conexion.getConnection();
+            System.out.println("ejecutando query: " + SQL_UPDATE);
+            stmt = conn.prepareStatement(SQL_UPDATE);
+            stmt.setInt(1, units);
+            stmt.setInt(2, id);
+            
+            rows = stmt.executeUpdate();
+            System.out.println("Registros actualizado:" + rows);
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+        finally{
+        	Conexion.close(stmt);
+        	Conexion.close(conn);
+        }
+        
+        return rows;
+    }
+	
+	
 }

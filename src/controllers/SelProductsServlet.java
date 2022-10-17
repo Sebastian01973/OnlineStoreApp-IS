@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Product;
+import models.Store;
+
 /**
  * Servlet implementation class SelProductsServlet
  */
@@ -37,10 +40,10 @@ public class SelProductsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int count = 0;
 		String[] list = request.getParameterValues("selection");
 		String[] listUnits = request.getParameterValues("units");
 		String[] listSelected = new String[listUnits.length];
-		int count = 0, countSelected = 0;
 		for (int i = 0; i < listUnits.length; i++) {
 			if(listUnits[i].equals("0")) {
 				listSelected[i] = "NN";
@@ -49,10 +52,16 @@ public class SelProductsServlet extends HttpServlet {
 				count++;
 			}
 		}
+		int userID = Controller.store.userID(); //ID del usuario Logueado
+		
 		for (int i = 0; i < listSelected.length; i++) {
-			System.out.println(listSelected[i] +" u:"+listUnits[i]);
+			if (!listSelected[i].equals("NN")) {
+				System.out.println(listSelected[i] +" u:"+listUnits[i]); // ID producto y unidades
+				Controller.store.addProductToCar(new Product(Integer.parseInt(listSelected[i]),Integer.parseInt( listUnits[i]) ));
+			}
 		}
-		System.out.println("sel:"+list.length+"-uni:"+listUnits.length);
+		
+		request.getSession().setAttribute("productListBuy",Controller.store.getProductcar());
 		RequestDispatcher dispatcher = request.getRequestDispatcher("products/buyCar.jsp");
 		dispatcher.forward(request, response);
 	}

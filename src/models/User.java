@@ -9,7 +9,6 @@ public class User implements Serializable{
 	 * @author sebastian
 	 */
 	private static final long serialVersionUID = 1L;
-	private static AtomicInteger ID_GENERATOR = new AtomicInteger(1000); // Auto incrementa el ID
 	private int us_id;
 	private String us_name;
 	private String us_nick;
@@ -17,15 +16,11 @@ public class User implements Serializable{
 	private String us_password;
 	
 	
-	public User() {
-		super();
-		us_id = ID_GENERATOR.getAndIncrement();
+	public User(int us_id) {
+		this.us_id = us_id;
 	}
-	
-	
 
 	public User(String us_nick, String us_name, String us_address, String us_password) {
-		this.us_id = ID_GENERATOR.getAndIncrement();
 		this.us_nick = us_nick;
 		this.us_password = us_password;
 		this.us_name = us_name;
@@ -35,7 +30,13 @@ public class User implements Serializable{
 
 	public User(String us_nick, String us_password) {
 		super();
-		us_id = ID_GENERATOR.getAndIncrement();
+		this.us_nick = us_nick;
+		this.us_password = us_password;
+	}
+	
+	public User(int us_id,String us_nick, String us_password) {
+		super();
+		this.us_id = us_id;
 		this.us_nick = us_nick;
 		this.us_password = us_password;
 	}
@@ -73,11 +74,14 @@ public class User implements Serializable{
 	public void setUs_password(String us_password) {
 		this.us_password = us_password;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 	
-	
-	
+	//Valida si la password y nick son los correctos
+		public boolean isAuthentication(String us_nick, String us_password) {
+			if (this.us_nick.equals(us_nick) && this.us_password.equals(us_password)) {
+				return true;
+			}else {
+				return false;
+			}
+		}
 
 }

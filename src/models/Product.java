@@ -23,6 +23,12 @@ public class Product implements Serializable{
 		this.pro_price = pro_price;
 		this.pro_units = pro_units;
 	}
+	
+	public Product(int pro_id, int pro_units) {
+		super();
+		this.pro_id = pro_id;
+		this.pro_units = pro_units;
+	}
 
 	public int getPro_id() {
 		return pro_id;
@@ -55,6 +61,8 @@ public class Product implements Serializable{
 		this.pro_units = pro_units;
 	}
 	
-
+	public double calculatePrice() {
+		return pro_units * pro_price;
+	}
 	
 }

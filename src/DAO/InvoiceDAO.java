@@ -1,11 +1,16 @@
 package DAO;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 import models.Invoice;
+import models.Product;
+import models.User;
 
 
 public class InvoiceDAO {
@@ -20,7 +25,7 @@ public class InvoiceDAO {
         	stmt = conn.prepareStatement("");
         	stmt.setString(1, null);
         	stmt.setDate(2, invoice.getDate());
-        	stmt.setInt(3, invoice.getUser().getUs_id());
+        	stmt.setInt(3, invoice.getId_user());
         	stmt.setString(4, invoice.getNumberInvoice());
         	rows = stmt.executeUpdate();
         }catch (SQLException e) {
@@ -30,6 +35,32 @@ public class InvoiceDAO {
 	           Conexion.close(conn);
 		}
         return rows;
+	}
+	
+	public ArrayList<Invoice> getInvoices(){
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		ArrayList<Invoice> list = new ArrayList<Invoice>();
+		try {
+			conn = Conexion.getConnection();
+			stmt = conn.prepareStatement("SELECT id_user, number_invoice, date FROM invoice");
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				int id_user = rs.getInt(1);
+				String number_invoice = rs.getString(2);
+				Date date = rs.getDate(4);
+				list.add(new Invoice(id_user, number_invoice,date ));
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			Conexion.close(rs);
+			Conexion.close(stmt);
+			Conexion.close(conn);
+		}
+		return list;
 	}
 	
 	

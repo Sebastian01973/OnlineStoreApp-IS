@@ -26,7 +26,6 @@
 			out.print("<h3>Productos: "+list.size()+"</h3>");%>
 		</div>
 		<form class="form" action="./SelProductsServlet" method="post" onsubmit="verify();">
-        			<button type="submit" id="btn-form" class="btn btn-success">Realizar compra</button>
 		<table class="table table-striped table-bordered" id="table">
 			<thead class="table-dark">
 			<tr>
@@ -52,6 +51,9 @@
 				</tr>
 				</c:if>
 			</c:forEach>
+			</table>
+			<button type="submit" id="btn-form" class="btn btn-success">Realizar compra</button>
+			
 			</form>
 	</div>
 	<script>

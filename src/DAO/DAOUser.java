@@ -9,7 +9,7 @@ import models.User;
 
 public class DAOUser {
 	
-	private static final String SQL_SELECT_USER = "SELECT password FROM user WHERE nick=?";
+	private static final String SQL_SELECT_USER = "SELECT id,password FROM user WHERE nick=?";
 	
     private static final String SQL_INSERT = "INSERT INTO user(id,name,nick,password,address) VALUES (?, ?, ?, ?, ?)";
     
@@ -30,10 +30,10 @@ public class DAOUser {
             rs = stmt.executeQuery();
             
             while(rs.next()){
-                String password = rs.getString("password"); 
-                user = new User(nick, password);
+                String password = rs.getString("password");
+                int id = rs.getInt("id");
+                user = new User(id,nick, password);
             }
-            
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         }
@@ -85,7 +85,7 @@ public class DAOUser {
             stmt.setString(2, user.getUs_nick());
             stmt.setString(3, user.getUs_password());
             stmt.setString(4, user.getUs_address());
-            stmt.setInt(55, user.getUs_id());
+            stmt.setInt(5, user.getUs_id());
             
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
