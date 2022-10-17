@@ -15,10 +15,14 @@
       </div>
       <nav>
         <ul>
-          <li><a href="#">Productos</a></li>
+          <li><form class="form" action="./ProductListServlet" method="post">
+          	<a>
+          			<input type="submit" value="Productos" style="background-color: #FF4520; color: white; border: 0px; cursor: pointer;"/> 
+          	</a>
+          </form></li>
           <li><a href="index.jsp">Cerrar Sesion</a></li>
         </ul>
       </nav>
-</div>
+	</div>
 </body>
 </html>

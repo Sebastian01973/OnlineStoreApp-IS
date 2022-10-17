@@ -42,7 +42,7 @@
                 <label for="password">Contraseña</label>
                 <input placeholder="Ingresar contraseña" type="password" name="us_password" required>
             </div>
-            <div class="input">
+            <div class="input" id="login">
                 <input type="submit" value="Ingresar">
             </div>
             <div class="separator">

@@ -6,10 +6,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class User implements Serializable{
 
 	/**
-	 * 
+	 * @author sebastian
 	 */
 	private static final long serialVersionUID = 1L;
-	private static AtomicInteger ID_GENERATOR = new AtomicInteger(1000); //Auto incrementa el ID
+	private static AtomicInteger ID_GENERATOR = new AtomicInteger(1000); // Auto incrementa el ID
 	private int us_id;
 	private String us_name;
 	private String us_nick;
@@ -23,7 +23,16 @@ public class User implements Serializable{
 	}
 	
 	
+
+	public User(String us_nick, String us_name, String us_address, String us_password) {
+		this.us_id = ID_GENERATOR.getAndIncrement();
+		this.us_nick = us_nick;
+		this.us_password = us_password;
+		this.us_name = us_name;
+		this.us_address = us_address;
+	}
 	
+
 	public User(String us_nick, String us_password) {
 		super();
 		us_id = ID_GENERATOR.getAndIncrement();
