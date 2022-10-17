@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class User implements Serializable{
 
 	/**
-	 * 
+	 * @author sebastian
 	 */
 	private static final long serialVersionUID = 1L;
 	private static AtomicInteger ID_GENERATOR = new AtomicInteger(1000); //Auto incrementa el ID
