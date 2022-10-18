@@ -18,14 +18,12 @@ import models.ProductManager;
 @WebServlet("/ProductListServlet")
 public class ProductListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    //clase DAO
-	private ProductManager productManager;
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
     public ProductListServlet() {
         super();
-        this.productManager = new ProductManager();
         // TODO Auto-generated constructor stub
     }
 
@@ -34,7 +32,7 @@ public class ProductListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("products/productCatalog.jsp");
-		request.getSession().setAttribute("productList",this.productManager.getListProducts());
+		request.getSession().setAttribute("productList",Controller.store.getProductManager().getListProducts());
 		dispatcher.forward(request, response);
 	}
 

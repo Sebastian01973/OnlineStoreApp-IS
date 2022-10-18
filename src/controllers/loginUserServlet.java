@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Store;
 import models.UserManager;
 
 /**
@@ -46,8 +47,7 @@ public class loginUserServlet extends HttpServlet {
 		String nickUser = String.valueOf(request.getParameter("us_nick"));
 		String passwordUser = String.valueOf(request.getParameter("us_password"));
 		
-		UserManager userManager = new UserManager();
-		boolean autenthication = userManager.isAuthentication(nickUser, passwordUser);
+		boolean autenthication = Controller.store.getUserManager().isAuthentication(nickUser, passwordUser);
 		
 		if (autenthication) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("store.jsp");

@@ -8,20 +8,29 @@ public class UserManager {
 
 	DAOUser dao = new DAOUser();
 	
+	private int id_User;
 	
 	public UserManager() {
 		super();
+		this.id_User = 0;
+	}
+	
+	public int getId_User() {
+		return id_User;
 	}
 
-	
+
+
+	public void setId_User(int id_User) {
+		this.id_User = id_User;
+	}
+
+
 	//Valida si la password y nick son los correctos
 	public boolean isAuthentication(String us_nick, String us_password) {
 		User user = dao.selectUser(us_nick);
-		if (user.getUs_nick().equals(us_nick) && user.getUs_password().equals(us_password)) {
-			return true;
-		}else {
-			return false;
-		}
+		this.id_User = user.getUs_id();
+		return user.isAuthentication(us_nick, us_password);
 	}
 	
 	public void adduser(String us_nick, String us_name, String us_address, String us_password) {
