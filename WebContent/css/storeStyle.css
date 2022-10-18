@@ -56,3 +56,30 @@ text-decoration: none;
   color: #f7f8f9;
 
 }
+.sales {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+.categorias {
+	padding-top: 4%;
+	padding-left: 9%;
+}
+.categorias h1{
+	font-size: 1.4rem;
+}
+.container {
+	margin: 5px;
+  float: left;
+  width: 250px;
+  height: 250px;
+}
+.container img{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.desc {
+  padding: 15px;
+  text-align: center;
+}
