@@ -272,6 +272,7 @@ body{
   background-color: #B2C8FF;
   text-align: center;
   transition: all 300ms ease;
+  padding: 0 .9em;
 }
 
 .footer .group1 .red-social a:hover{

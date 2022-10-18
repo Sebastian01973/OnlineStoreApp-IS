@@ -82,7 +82,9 @@
         <div class="box">
           <h2>SIGUENOS</h2>
           <div class="red-social">
-          		<!-- To do... -->
+          		<img alt="Instagram" src="./images/instagram.png">
+          		<img alt="Facebook" src="./images/facebook.png">
+          		<img alt="Whatsapp" src="./images/whatsapp.png">
           </div>
         </div>
       </div>
