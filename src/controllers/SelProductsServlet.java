@@ -57,7 +57,7 @@ public class SelProductsServlet extends HttpServlet {
 		for (int i = 0; i < listSelected.length; i++) {
 			if (!listSelected[i].equals("NN")) {
 				System.out.println(listSelected[i] +" u:"+listUnits[i]); // ID producto y unidades
-				Controller.store.addProductToCar(new Product(Integer.parseInt(listSelected[i]),Integer.parseInt( listUnits[i]) ));
+				Controller.store.addProductToCar(Integer.parseInt(listSelected[i]),Integer.parseInt(listUnits[i]));
 			}
 		}
 		

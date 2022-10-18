@@ -22,7 +22,7 @@
 		<div class="row">
 			<h3>Lista de productos comprados</h3>
 			<% ArrayList<Product> list = (ArrayList<Product>)request.getSession().getAttribute("productListBuy"); 
-			out.print("<h3>Productos: "+list.size()+"</h3>");%>
+			out.print("<h3>Productos Comprados: "+list.size()+"</h3>");%>
 		</div>
 		<table class="table table-striped table-bordered" id="table">
 			<thead class="table-dark">
@@ -32,7 +32,7 @@
 	            <th scope="col">Presentación</th>
 	            <th scope="col">Precio</th>
 	            <th scope="col">Unidades Compradas</th>
-	            <th scope="col">SubTotal</th>
+	            <th scope="col">Eliminar</th>
           	</tr>
 			</thead>
 			<c:forEach var="product" items="${productListBuy}">
@@ -45,6 +45,10 @@
 				</tr>
 			</c:forEach>
 			</table>
+			
+			<form class="form" action="./FinishBuyServlet" method="get" >
+				<button type="submit" id="btn-form" class="btn btn-success">Confirmar Pedido</button>
+			</form>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>

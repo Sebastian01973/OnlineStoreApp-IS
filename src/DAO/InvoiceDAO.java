@@ -14,6 +14,7 @@ import models.User;
 
 
 public class InvoiceDAO {
+	
 	private static final String SQL_INSERT = "INSERT INTO invoice(id, date, id_user, number_invoice) VALUES(?, ?, ?, ?)";
 
 	public int insertInvoice(Invoice invoice) {
@@ -22,7 +23,7 @@ public class InvoiceDAO {
         int rows = 0;
         try {
         	conn = Conexion.getConnection();
-        	stmt = conn.prepareStatement("");
+        	stmt = conn.prepareStatement(SQL_INSERT);
         	stmt.setString(1, null);
         	stmt.setDate(2, invoice.getDate());
         	stmt.setInt(3, invoice.getId_user());
@@ -61,6 +62,34 @@ public class InvoiceDAO {
 			Conexion.close(conn);
 		}
 		return list;
+	}
+	
+	public Invoice getInvoice(String num_invoice){
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Invoice invoice = null;
+		try {
+			conn = Conexion.getConnection();
+			stmt = conn.prepareStatement("SELECT id,id_user, number_invoice, date FROM invoice WHERE number_invoice=?");
+			rs = stmt.executeQuery();
+			stmt.setString(1,num_invoice);
+			while(rs.next()) {
+				int id = rs.getInt(1);
+				int id_user = rs.getInt(2);
+				String number_invoice = rs.getString(3);
+				Date date = rs.getDate(4);
+				invoice = new Invoice(id,id_user, number_invoice,date );
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			Conexion.close(rs);
+			Conexion.close(stmt);
+			Conexion.close(conn);
+		}
+		return invoice;
 	}
 	
 	

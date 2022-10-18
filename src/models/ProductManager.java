@@ -25,23 +25,43 @@ public class ProductManager {
 	public ArrayList<Product> getListProducts() {
 		return this.listProducts;
 	}
+	
+	public Product searchProduct(int id) {
+		for (Product product : listProducts) {
+			if (product.getPro_id() == id) {
+				return product;
+			}
+		}
+		return null;
+	}
 
 	public void setListProducts(ArrayList<Product> listProducts) {
 		this.listProducts = listProducts;
 	}
 	
-	public void setunitProduct(Product p) {
+	public void setUnitToCar(int id,int units) {
 		for (Product product : listProducts) {
-			if (product.getPro_id() == p.getPro_id()) {
-				product.setPro_units(product.getPro_units()-p.getPro_units());
+			if (product.getPro_id() == id) {
+				product.setPro_units(product.getPro_units()+units);
 			}
 		}
 	}
+	
+	public void setunitProduct(int id,int units) {
+		for (Product product : listProducts) {
+			if (product.getPro_id() == id) {
+				product.setPro_units(product.getPro_units()-units);
+			}
+		}
+	}
+	
 	
 	public void updateProducts() {
 		for (Product product : listProducts) {
 			productDAO.update(product.getPro_units(),product.getPro_units());
 		}
 	}
+	
+	
 	
 }

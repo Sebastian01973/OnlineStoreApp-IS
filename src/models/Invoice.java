@@ -31,6 +31,12 @@ public class Invoice implements Serializable {
 		productsList = new ArrayList<>();
 	}
 	
+	public Invoice(String numberInvoice) {
+		super();
+		productsList = new ArrayList<>();
+		this.numberInvoice = numberInvoice;
+	}
+	
 	public Invoice(int id_user,String numberInvoice, Date date) {
 		super();
 		this.id_user = id_user;
@@ -49,18 +55,27 @@ public class Invoice implements Serializable {
 		this.date = date;
 	}
 	
+	
+	public Product getProductCar(int id) {
+		for (Product product : productsList) {
+			if (product.getPro_id() == id) {
+				return product;
+			}
+		}
+		return null;
+	}
+	
+	public void deleteProductsCar() {
+		productsList.clear();
+	}
+	
+	
 	public void addProductCar(Product product) {
 		productsList.add(product);
 	}
 	
 	public int getId_user() {
 		return id_user;
-	}
-
-
-	public String generateNumberInvoice() {
-		countInvoice++;
-		return "AVA"+countInvoice;
 	}
 	
 	public void calculateSubtotal() {
@@ -103,5 +118,33 @@ public class Invoice implements Serializable {
 		return countInvoice;
 	}
 
+	public void setId_user(int id_user) {
+		this.id_user = id_user;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public void setNumberInvoice(String numberInvoice) {
+		this.numberInvoice = numberInvoice;
+	}
+
+	public void setProductsList(ArrayList<Product> productsList) {
+		this.productsList = productsList;
+	}
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public void setSubtotalPrice(double subtotalPrice) {
+		this.subtotalPrice = subtotalPrice;
+	}
+
+	public void setCountInvoice(int countInvoice) {
+		this.countInvoice = countInvoice;
+	}
+	
 	
 }
