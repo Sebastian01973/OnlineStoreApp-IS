@@ -47,6 +47,7 @@ public class loginUserServlet extends HttpServlet {
 		String nickUser = String.valueOf(request.getParameter("us_nick"));
 		String passwordUser = String.valueOf(request.getParameter("us_password"));
 		
+		
 		boolean autenthication = Controller.store.getUserManager().isAuthentication(nickUser, passwordUser);
 		
 		if (autenthication) {

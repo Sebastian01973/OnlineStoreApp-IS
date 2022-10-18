@@ -89,10 +89,11 @@ public class Store {
 		invoiceManager.getInvoiceTemp().addProductsDAO();
 		
 		//Actualiza los productos de la DB
-		productManager.updateProducts();
+		productManager.updateProducts(getProductcar());
 		
 	}
 	
+	//Obtiene los productos del carrito 
 	public ArrayList<Product> getProductcar(){
 		return invoiceManager.getInvoiceTemp().getProductsList();
 	}

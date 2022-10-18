@@ -57,12 +57,15 @@ public class ProductManager {
 	}
 	
 	
-	public void updateProducts() {
+	public void updateProducts(ArrayList<Product> products) {
+		int count = 0;
 		for (Product product : listProducts) {
-			productDAO.update(product.getPro_units(),product.getPro_units());
+			//if (products.get(count).getPro_id() == product.getPro_id()) {
+				productDAO.update(product.getPro_units(),product.getPro_id());
+				//count++;
+			//}
 		}
+		System.out.println("Count lista: " + count);
 	}
-	
-	
 	
 }
