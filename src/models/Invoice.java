@@ -13,15 +13,15 @@ public class Invoice implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private int id_user;
 	private int id;
+	private int id_user;
 	private Date date;
 	private String numberInvoice;
 	private ArrayList<Product> productsList;
 	
-	private DetailDAO detailDAO;
+	private DetailDAO detailDAO = new DetailDAO();
 	
-	private double totalPrice,subtotalPrice;
+	private double totalPrice;
 	
 	private int countInvoice;
 	
@@ -55,6 +55,12 @@ public class Invoice implements Serializable {
 		this.date = date;
 	}
 	
+	public void addProductsDAO() {
+		for (Product product : productsList) {
+			detailDAO.insertInvoice(id,product);
+		}
+	}
+	
 	
 	public Product getProductCar(int id) {
 		for (Product product : productsList) {
@@ -78,10 +84,18 @@ public class Invoice implements Serializable {
 		return id_user;
 	}
 	
-	public void calculateSubtotal() {
+	public double calculateSubtotal() {
+		double subtotalPrice = 0;
 		for (Product product: productsList) {
 			subtotalPrice += product.calculatePrice();
 		}
+		return subtotalPrice;
+	}
+	
+	public double calculatetotal() {
+		double subtotal = calculateSubtotal();
+		double total = (subtotal * 0.19) + subtotal;
+		return total;
 	}
 	
 	public String getNumberInvoice() {
@@ -110,10 +124,6 @@ public class Invoice implements Serializable {
 		return totalPrice;
 	}
 
-	public double getSubtotalPrice() {
-		return subtotalPrice;
-	}
-
 	public int getCountInvoice() {
 		return countInvoice;
 	}
@@ -138,13 +148,13 @@ public class Invoice implements Serializable {
 		this.totalPrice = totalPrice;
 	}
 
-	public void setSubtotalPrice(double subtotalPrice) {
-		this.subtotalPrice = subtotalPrice;
-	}
 
 	public void setCountInvoice(int countInvoice) {
 		this.countInvoice = countInvoice;
 	}
-	
+
+	public void setId(int id) {
+		this.id = id;
+	}	
 	
 }

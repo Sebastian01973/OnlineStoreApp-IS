@@ -28,7 +28,6 @@ public class DAOUser {
             stmt = conn.prepareStatement(SQL_SELECT_USER);
             stmt.setString(1, nick);
             rs = stmt.executeQuery();
-            
             while(rs.next()){
                 String password = rs.getString("password");
                 int id = rs.getInt("id");

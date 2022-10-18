@@ -67,18 +67,29 @@ public class Store {
 	//Crear Factura 
 	public void createInvoice() {
 		Invoice invoice = invoiceManager.getInvoiceTemp();
-		Date datetime = Date.valueOf(LocalDate.now());
+		
+		Date datetime = Date.valueOf(LocalDate.now());	
 		invoice.setId_user(userID());
 		invoice.setDate(datetime);
-		invoiceManager.SaveInvoice(invoice); //Guarda la Factura del Invoice
+		invoiceManager.SaveInvoice(invoice); //Guarda la Factura del Invoice		
+		System.out.println("Factura Creada");
 	}
 	
 	//Buscar factura y Guardar los productos
 	public void saveDetailProducts() {
-		
 		String number_invoice = invoiceManager.invoiceTemp.getNumberInvoice();
-		Invoice invoice = invoiceManager.getInvoiceDAO(number_invoice);
-		int id_invoice = invoice.getId();
+		System.out.println(number_invoice);
+		
+		int id_invoice = invoiceManager.getInvoiceDAO(number_invoice).getId();
+		
+		System.out.println(id_invoice);
+		invoiceManager.getInvoiceTemp().setId(id_invoice);
+		
+		//Agrega los productos a los detalles
+		invoiceManager.getInvoiceTemp().addProductsDAO();
+		
+		//Actualiza los productos de la DB
+		productManager.updateProducts();
 		
 	}
 	

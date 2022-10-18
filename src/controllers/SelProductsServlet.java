@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Product;
-import models.Store;
-
 /**
  * Servlet implementation class SelProductsServlet
  */
@@ -56,7 +53,7 @@ public class SelProductsServlet extends HttpServlet {
 		
 		for (int i = 0; i < listSelected.length; i++) {
 			if (!listSelected[i].equals("NN")) {
-				System.out.println(listSelected[i] +" u:"+listUnits[i]); // ID producto y unidades
+				//System.out.println(listSelected[i] +" u:"+listUnits[i]); // ID producto y unidades
 				Controller.store.addProductToCar(Integer.parseInt(listSelected[i]),Integer.parseInt(listUnits[i]));
 			}
 		}

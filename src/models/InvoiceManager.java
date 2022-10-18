@@ -40,7 +40,7 @@ public class InvoiceManager {
 	
 	public String generateNumberInvoice() {
 		countInvoice++;
-		return "AVA"+countInvoice;
+		return "AVA"+3;
 	}
 	
 	

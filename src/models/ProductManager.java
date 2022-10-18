@@ -17,6 +17,7 @@ public class ProductManager {
 		//Agregan todos los productos 
 		listProducts.addAll(productDAO.getProducts());
 	}
+	
 
 	public ArrayList<Product> getListProductsDAO() {
 		return productDAO.getProducts();

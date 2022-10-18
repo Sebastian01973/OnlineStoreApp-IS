@@ -5,12 +5,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import models.Invoice;
-import models.Product;
-import models.User;
 
 
 public class InvoiceDAO {
@@ -72,13 +69,13 @@ public class InvoiceDAO {
 		try {
 			conn = Conexion.getConnection();
 			stmt = conn.prepareStatement("SELECT id,id_user, number_invoice, date FROM invoice WHERE number_invoice=?");
-			rs = stmt.executeQuery();
 			stmt.setString(1,num_invoice);
+			rs = stmt.executeQuery();
 			while(rs.next()) {
-				int id = rs.getInt(1);
-				int id_user = rs.getInt(2);
-				String number_invoice = rs.getString(3);
-				Date date = rs.getDate(4);
+				int id = rs.getInt("id");
+				int id_user = rs.getInt("id_user");
+				String number_invoice = rs.getString("number_invoice");
+				Date date = rs.getDate("date");
 				invoice = new Invoice(id,id_user, number_invoice,date );
 			}
 		} catch (SQLException ex) {

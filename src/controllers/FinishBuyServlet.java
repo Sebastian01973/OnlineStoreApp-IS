@@ -32,12 +32,15 @@ public class FinishBuyServlet extends HttpServlet {
 		
 		//Crear la factura
 		Controller.store.createInvoice();
+		//Guarda los productos 
+		Controller.store.saveDetailProducts();
 		
 		out.println("<script type=\"text/javascript\">");
 		out.println("alert('Compra Exitosa');");
 		out.println("location='store.jsp';");
 		out.println("</script>");
-		Controller.store.deleteProductsInCar();
+		
+		Controller.store.deleteProductsInCar(); //Elimina los productos del carrito
 		Controller.store.resetInvoice();
 		
 		

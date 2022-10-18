@@ -4,24 +4,24 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import models.Invoice;
+import models.Product;
 
 public class DetailDAO {
 	
-	private static final String SQL_INSERT = "INSERT INTO detail(id, date, id_user, number_invoice) VALUES(?, ?, ?, ?)";
+	private static final String SQL_INSERT = "INSERT INTO invoice_detail (id_invoice,id_product, quantity,price) VALUES(?, ?, ?, ?)";
 	
 	
-	public int insertInvoice(Invoice invoice) {
+	public int insertInvoice(int id_invoice,Product product) {
 		Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
         try {
         	conn = Conexion.getConnection();
         	stmt = conn.prepareStatement(SQL_INSERT);
-        	stmt.setString(1, null);
-        	stmt.setDate(2, invoice.getDate());
-        	stmt.setInt(3, invoice.getId_user());
-        	stmt.setString(4, invoice.getNumberInvoice());
+        	stmt.setInt(1, id_invoice);
+        	stmt.setInt(2, product.getPro_id());
+        	stmt.setInt(3, product.getPro_units());
+        	stmt.setDouble(4, product.getPro_price());
         	rows = stmt.executeUpdate();
         }catch (SQLException e) {
         	e.printStackTrace();
