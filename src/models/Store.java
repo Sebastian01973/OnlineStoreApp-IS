@@ -90,7 +90,6 @@ public class Store {
 		
 		//Actualiza los productos de la DB
 		productManager.updateProducts(getProductcar());
-		
 	}
 	
 	//Obtiene los productos del carrito 

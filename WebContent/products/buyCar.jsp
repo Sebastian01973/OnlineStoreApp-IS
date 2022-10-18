@@ -2,14 +2,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="java.util.ArrayList, models.ProductManager, models.Product" %>
+<%@ page import="java.util.ArrayList, models.ProductManager, models.Product, java.sql.Date, java.time.LocalDate" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Carrito de Compras</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-<style><%@include file="/css/storeStyle.css"%></style>
+<style><%@include file="/css/storeCopy.css"%></style>
 </head>
 <body>
 	<div class="header">
@@ -54,7 +54,9 @@
 			<h3>Detalles</h3>
 			<% 
 			String NumberInvoice = Controller.getStore().getInvoiceManager().getInvoiceTemp().getNumberInvoice();
-			out.print("<h3>Numero de Factura: " +NumberInvoice+"</h3>");
+			Date datetime = Date.valueOf(LocalDate.now());
+			
+			out.print("<h3>Numero de Factura: " +NumberInvoice+ " - Fecha: "+ datetime +"</h3>");
 			double priceTotal = Controller.store.getInvoiceManager().getInvoiceTemp().calculateSubtotal();
 			out.print("<br>");
 			out.print("<h2>SubTotal: " +priceTotal+"</h2>");
