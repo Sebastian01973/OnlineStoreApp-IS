@@ -20,7 +20,13 @@
           			<input type="submit" value="Productos" style="background-color: #FF4520; color: white; border: 0px; cursor: pointer;"/> 
           	</a>
           </form></li>
-          <li><a href="index.jsp">Cerrar Sesion</a></li>
+          <li>
+          <form action="./LogOutServlet" method="post">
+          <a>
+          <input type="submit" value="Cerrar Sesion" style="background-color: #FF4520; color: white; border: 0px; cursor: pointer;"/>
+          </a>
+          </form>
+          </li>
         </ul>
       </nav>
 	</div>

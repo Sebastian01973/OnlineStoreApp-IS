@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class FinishBuyServlet
+ * Servlet implementation class LogOutServlet
  */
-@WebServlet("/FinishBuyServlet")
-public class FinishBuyServlet extends HttpServlet {
+@WebServlet("/LogOutServlet")
+public class LogOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FinishBuyServlet() {
+    public LogOutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,26 +28,15 @@ public class FinishBuyServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
+		response.setContentType("text/html;charset=UTF-8");
 		
-		//Crear la factura
-		Controller.store.createInvoice();
-		//Guarda los productos a la DB
-		Controller.store.saveDetailProducts();
-		
-		//Reinicia el carrito y crea otra factura
 		Controller.store.deleteProductsInCar();
-		Controller.store.resetInvoice();
 		
+		PrintWriter out = response.getWriter();
 		out.println("<script type=\"text/javascript\">");
-		out.println("alert('Compra Exitosa');");
-		out.println("location='store.jsp';");
+		out.println("alert('Sesion Cerrada');");
+		out.println("location='index.jsp';");
 		out.println("</script>");
-		
-		Controller.store.deleteProductsInCar(); //Elimina los productos del carrito
-		Controller.store.resetInvoice();
-		
-		
 	}
 
 	/**

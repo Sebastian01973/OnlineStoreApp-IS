@@ -29,8 +29,12 @@ public class UserManager {
 	//Valida si la password y nick son los correctos
 	public boolean isAuthentication(String us_nick, String us_password) {
 		User user = dao.selectUser(us_nick);
-		this.id_User = user.getUs_id();
-		return user.isAuthentication(us_nick, us_password);
+		if (user == null) {
+			return false;
+		}else {
+			this.id_User = user.getUs_id();
+			return user.isAuthentication(us_nick, us_password);
+		}
 	}
 	
 	public void adduser(String us_nick, String us_name, String us_address, String us_password) {

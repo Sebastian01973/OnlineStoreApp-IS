@@ -39,8 +39,8 @@ public class InvoiceManager {
 	
 	
 	public String generateNumberInvoice() {
-		countInvoice++;
-		return "AVA"+3;
+		countInvoice+=2;
+		return "AVAN"+countInvoice;
 	}
 	
 	

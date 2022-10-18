@@ -55,7 +55,7 @@ public class ProductDAO {
             stmt.setInt(2, id);
             
             rows = stmt.executeUpdate();
-            System.out.println("Registros actualizado:" + rows);
+            //System.out.println("Registros actualizado:" + rows);
             
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
